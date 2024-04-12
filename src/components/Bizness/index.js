@@ -1,10 +1,12 @@
-import React from 'react';
+
 import Wrapper from "../Wrapper";
+import Equipe from "./Equipe";
 
 const index = () => {
     return (
         <Wrapper>
-             <h1 className="text-secondary">Page À propos</h1>
+             <h1 className="text-secondary">Page Bizness</h1>
+             <Equipe />
         </Wrapper>
     );
 };
