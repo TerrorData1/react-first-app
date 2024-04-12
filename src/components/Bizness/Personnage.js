@@ -2,7 +2,7 @@ import React from 'react';
 
 const Personnage = ({nom, img, equipe}) => {
     return (
-        <div className="card" style={{width: "18rem"}}>
+        <div className="card mt-3" style={{width: "18rem"}}>
         <img src={img} className="card-img-top" alt={"avis de recherche de " + nom} />
         <div className="card-body">
         <p className="card-title">Nom : {nom}</p>

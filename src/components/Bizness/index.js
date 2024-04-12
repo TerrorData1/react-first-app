@@ -5,7 +5,7 @@ import Equipe from "./Equipe";
 const index = () => {
     return (
         <Wrapper>
-             <h1 className="text-secondary">Page Bizness</h1>
+             {/* <h1 className="text-secondary pt-5">Page Bizness</h1> */}
              <Equipe />
         </Wrapper>
     );

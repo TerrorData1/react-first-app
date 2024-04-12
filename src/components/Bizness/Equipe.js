@@ -21,12 +21,12 @@ const[perso, setPerso] = useState([
 ]);
 
     return (
-        <div>
-             <h1 className="text-black d-flex justify-content-center">Notre Equipage</h1>
-             <div className="d-flex justify-content-center">
-             <Personnage nom={perso[0].nom} img={perso[0].img} equipe={perso[0].equipe} />
+        <section classname="container">
+             <h2 className="text-black d-flex justify-content-center pt-5 fw-bold">Notre Equipage</h2>
+             <div className="d-flex flex-wrap justify-content-lg-between justify-content-center">
+                {perso.map((el, index) => <Personnage key={index} nom={el.nom} img={el.img} equipe={el.equipe} />)}
              </div>
-      </div>
+       </section>
         
     );
 };

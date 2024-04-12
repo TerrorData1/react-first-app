@@ -45,13 +45,13 @@ const Header = () => {
       <div className="slider-wrapper">
         <Slider {...settings}>
           <div>
-            <img src="https://via.placeholder.com/1355x400" alt="Slide 1" />
+          <img src="https://via.placeholder.com/1260x400" alt="Slide 1" style={{ width: "100%", height: "400px" }} />
           </div>
           <div>
-            <img src="https://via.placeholder.com/1355x400" alt="Slide 2" />
+          <img src="https://via.placeholder.com/1260x400" alt="Slide 1" style={{ width: "100%", height: "400px" }} />
           </div>
           <div>
-            <img src="https://via.placeholder.com/1355x400" alt="Slide 3" />
+          <img src="https://via.placeholder.com/1260x400" alt="Slide 1" style={{ width: "100%", height: "400px" }} />
           </div>
         </Slider>
       </div>
