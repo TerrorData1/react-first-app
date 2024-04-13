@@ -4,6 +4,9 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import logo from "../../assets/images/logo.png";
+import slide1 from "../../assets/images/slide1.webp";
+import slide2 from "../../assets/images/slide2.webp";
+import slide3 from "../../assets/images/slide3.webp";
 
 const Header = () => {
   const settings = {
@@ -27,16 +30,16 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to={"/bizness"}>Notre Entreprise</Link>
+                <Link className="nav-link active text-white fw-bold" aria-current="page" to={"/bizness"}>Notre Entreprise</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to={"/service"}>Nos Prestations</Link>
+                <Link className="nav-link text-white fw-bold" to={"/service"}>Nos Prestations</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to={"/blog"}>L'Actualité</Link>
+                <Link className="nav-link text-white fw-bold" to={"/blog"}>L'Actualité</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to={"/contact"}>Nous Contacter</Link>
+                <Link className="nav-link text-white fw-bold" to={"/contact"}>Nous Contacter</Link>
               </li>
             </ul>
           </div>
@@ -45,13 +48,13 @@ const Header = () => {
       <div className="slider-wrapper">
         <Slider {...settings}>
           <div>
-          <img src="https://via.placeholder.com/1260x400" alt="Slide 1" style={{ width: "100%", height: "400px" }} />
+          <img src={slide1} alt="Slide 1" style={{ width: "100%", height: "400px" }} />
           </div>
           <div>
-          <img src="https://via.placeholder.com/1260x400" alt="Slide 1" style={{ width: "100%", height: "400px" }} />
+          <img src={slide2} alt="Slide 1" style={{ width: "100%", height: "400px" }} />
           </div>
           <div>
-          <img src="https://via.placeholder.com/1260x400" alt="Slide 1" style={{ width: "100%", height: "400px" }} />
+          <img src={slide3} alt="Slide 1" style={{ width: "100%", height: "400px" }} />
           </div>
         </Slider>
       </div>
