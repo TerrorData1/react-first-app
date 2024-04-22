@@ -1,31 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 
-/* Les constantes `NameRegex` et `EmailRegex` sont des expressions régulières utilisées pour valider
-les champs de saisie du formulaire. */
 const NameRegex = /^[a-zA-Z\s-]{2,23}$/;
 const EmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const FuncLifeCycle = () => {
   const [firstname, setFirstname] = useState('');
-  const [validFirstname, setValidFirstname] = useState(false);
-  
+  const [validFirstname, setValidFirstname] = useState(null); // Initialise à null
   const [lastname, setLastname] = useState('');
-  const [validLastname, setValidLastname] = useState(false);
-  
+  const [validLastname, setValidLastname] = useState(null); // Initialise à null
   const [email, setEmail] = useState('');
-  const [validEmail, setValidEmail] = useState(false);
+  const [validEmail, setValidEmail] = useState(null); // Initialise à null
 
   const [successMessage, setSuccessMessage] = useState('');
 
-/* Les lignes `const firstnameRef = useRef();`, `const lastnameRef = useRef();` et `const emailRef =
-useRef();` créent trois références distinctes à l'aide du hook `useRef` dans React. */
   const firstnameRef = useRef();
   const lastnameRef = useRef();
   const emailRef = useRef();
 
-
-/* Ces hooks `useEffect` sont utilisés pour effectuer des effets secondaires dans les composants de
-fonction. Voici ce que chacun d'eux fait : */
   useEffect(() => {
     firstnameRef.current.focus();
     console.log('Firstname:', firstname);
@@ -42,23 +33,28 @@ fonction. Voici ce que chacun d'eux fait : */
   const handleFirstnameChange = () => {
     const value = firstnameRef.current.value;
     setFirstname(value);
-    setValidFirstname(NameRegex.test(value));
+    setValidFirstname(NameRegex.test(value) ? true : false); // Met à jour à true si valide, sinon false
   }
 
   const handleLastnameChange = () => {
     const value = lastnameRef.current.value;
     setLastname(value);
-    setValidLastname(NameRegex.test(value));
+    setValidLastname(NameRegex.test(value) ? true : false); // Met à jour à true si valide, sinon false
   }
 
   const handleEmailChange = () => {
     const value = emailRef.current.value;
     setEmail(value);
-    setValidEmail(EmailRegex.test(value));
+    setValidEmail(EmailRegex.test(value) ? true : false); // Met à jour à true si valide, sinon false
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (validFirstname === null || validLastname === null || validEmail === null) {
+      console.log('Veuillez remplir tous les champs.');
+      return;
+    }
 
     if (!validFirstname) {
       console.log('Le prénom est invalide');
@@ -86,14 +82,12 @@ fonction. Voici ce que chacun d'eux fait : */
 
   return (
     <>
-      {/* <h2>{firstname}</h2> */}
       <form onSubmit={handleSubmit} className="col-10 mx-auto">
-      {successMessage && <p className="text-success">{successMessage}</p>}
-
+        {successMessage && <p className="text-success">{successMessage}</p>}
         <div className="form-floating mb-2">
           <input 
             id="firstname" 
-            className={`form-control ${validFirstname ? 'is-valid' : 'is-invalid'}`} 
+            className={`form-control ${validFirstname === true ? 'is-valid' : validFirstname === false ? 'is-invalid' : ''}`} 
             type="text" 
             name="firstname" 
             ref={firstnameRef}
@@ -101,14 +95,14 @@ fonction. Voici ce que chacun d'eux fait : */
             onChange={handleFirstnameChange}
           />
           <label htmlFor="firstname" className="form-label d-flex">Prénom de l'utilisateur :</label>
-          <div className="invalid-feedback">
+          {validFirstname === false && <div className="invalid-feedback">
             Veuillez entrer un prénom valide (au moins 2 caractères).
-          </div>
+          </div>}
         </div>
         <div className="form-floating mb-2">
           <input 
             id="lastname" 
-            className={`form-control ${validLastname ? 'is-valid' : 'is-invalid'}`} 
+            className={`form-control ${validLastname === true ? 'is-valid' : validLastname === false ? 'is-invalid' : ''}`} 
             type="text" 
             name="lastname" 
             ref={lastnameRef}
@@ -116,14 +110,14 @@ fonction. Voici ce que chacun d'eux fait : */
             onChange={handleLastnameChange}
           />
           <label htmlFor="lastname" className="form-label d-flex">Nom de l'utilisateur :</label>
-          <div className="invalid-feedback">
+          {validLastname === false && <div className="invalid-feedback">
             Veuillez entrer un nom valide (au moins 2 caractères).
-          </div>
+          </div>}
         </div>
         <div className="form-floating mb-2">
           <input 
             id="email" 
-            className={`form-control ${validEmail ? 'is-valid' : 'is-invalid'}`} 
+            className={`form-control ${validEmail === true ? 'is-valid' : validEmail === false ? 'is-invalid' : ''}`} 
             type="email" 
             name="email" 
             ref={emailRef}
@@ -131,9 +125,9 @@ fonction. Voici ce que chacun d'eux fait : */
             onChange={handleEmailChange}
           />
           <label htmlFor="email" className="form-label d-flex">Email de l'utilisateur :</label>
-          <div className="invalid-feedback">
+          {validEmail === false && <div className="invalid-feedback">
             Veuillez entrer une adresse email valide.
-          </div>
+          </div>}
           <input className="btn btn-primary mt-2" type="submit" value="envoyer" />
         </div>
       </form>
