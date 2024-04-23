@@ -1,11 +1,12 @@
-import Wrapper from "../Wrapper";
+import Wrapper from '../Wrapper';
+import Hoc from './Hoc';
 
 const index = () => {
-    return (
-        <Wrapper>
-             <h2 className="text-black d-flex justify-content-center pt-5 fw-bold">Page Blog</h2>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <Hoc />
+    </Wrapper>
+  );
 };
 
 export default index;

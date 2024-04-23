@@ -2,7 +2,7 @@ import Wrapper from "../Wrapper";
 import LifeCycle from "./LifeCycle";
 import FuncLifeCycle from "./FuncLifeCycle";
 
-
+//exo 1
 // const index = () => {
 //     return (
 //         <Wrapper>
@@ -13,7 +13,7 @@ import FuncLifeCycle from "./FuncLifeCycle";
 //     );
 // };
 
-
+//exo 2
 const index = () => {
     return (
       <Wrapper>

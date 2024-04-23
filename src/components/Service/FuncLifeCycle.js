@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
+/* Les constantes `NameRegex` et `EmailRegex` sont des expressions régulières utilisées pour valider
+les champs de saisie du formulaire. */
 const NameRegex = /^[a-zA-Z\s-]{2,23}$/;
 const EmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -48,6 +50,13 @@ const FuncLifeCycle = () => {
     setValidEmail(EmailRegex.test(value) ? true : false); // Met à jour à true si valide, sinon false
   }
 
+/**
+ * La fonction handleSubmit empêche le comportement par défaut d'une soumission de formulaire.
+ * @param e - La fonction `handleSubmit` est une fonction courante utilisée dans les soumissions de
+ * formulaires pour empêcher le comportement par défaut de la soumission de formulaire, qui consiste à
+ * recharger la page. En appelant `e.preventDefault()`, vous empêchez le comportement par défaut de
+ * l'événement, dans ce cas, la soumission d'un formulaire.
+ */
   const handleSubmit = (e) => {
     e.preventDefault();
 
